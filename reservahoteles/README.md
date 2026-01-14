@@ -12,6 +12,23 @@ Permite consultar la disponibilidad de habitaciones ingresando:
 - ID del tipo de habitación deseada
 - Fechas de reserva (inicio y fin)
 
+**Nota:** Para seleccionar el hotel y el tipo de habitación, debes ingresar el ID correspondiente. A continuación se muestran los IDs disponibles:
+
+#### Hoteles Disponibles
+| ID | Nombre | Ubicación |
+|----|--------|-----------|
+| 1 | Hotel Barranquilla | Barranquilla, Atlántico, Colombia |
+| 2 | Hotel Cali | Cali, Valle del Cauca, Colombia |
+| 3 | Hotel Cartagena | Cartagena, Bolívar, Colombia |
+| 4 | Hotel Bogotá | Bogotá D.C., Colombia |
+
+#### Tipos de Habitación Disponibles
+| ID | Tipo | Capacidad de Personas | Descripción |
+|----|------|----------------------|-------------|
+| 1 | Estándar | 4 | Habitación básica con servicios estándar |
+| 2 | Premium | 6 | Habitación mejorada con servicios adicionales |
+| 3 | VIP | 8 | Suite de lujo con todos los servicios premium |
+
 El sistema muestra:
 - Cantidad total de habitaciones
 - Cantidad de habitaciones reservadas
