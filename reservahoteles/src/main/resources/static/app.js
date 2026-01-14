@@ -36,7 +36,6 @@ searchForm.addEventListener('submit', async (e) => {
     const fechaInicio = formData.get('fechaInicio');
     const fechaFin = formData.get('fechaFin');
 
-    // Validaciones
     if (!idHotel || !idTipo || !fechaInicio || !fechaFin) {
         showError('Por favor, complete todos los campos del formulario.');
         return;
@@ -47,11 +46,9 @@ searchForm.addEventListener('submit', async (e) => {
         return;
     }
 
-    // Ocultar errores y resultados anteriores
     hideError();
     hideResults();
 
-    // Mostrar loading
     setLoading(true);
 
     try {
@@ -104,7 +101,6 @@ searchForm.addEventListener('submit', async (e) => {
         console.error('Error al buscar disponibilidad:', error);
         let errorMsg = error.message || 'Error desconocido';
         
-        // Mensajes más amigables según el tipo de error
         if (errorMsg.includes('Failed to fetch') || errorMsg.includes('NetworkError')) {
             errorMsg = 'No se pudo conectar con el servidor. Por favor, verifique que el servidor esté ejecutándose en http://localhost:8080';
         } else if (errorMsg.includes('500')) {
@@ -244,32 +240,6 @@ function hideResults() {
     resultsSection.style.display = 'none';
 }
 
-// Datos de prueba para demostración (se pueden usar cuando el backend no esté disponible)
-function loadSampleData() {
-    const sampleData = [
-        {
-            tipoHabitacion: 'Habitación Estándar',
-            cantidadTotal: 20,
-            cantidadDisponible: 15,
-            capacidadPersonas: 2
-        },
-        {
-            tipoHabitacion: 'Suite Deluxe',
-            cantidadTotal: 10,
-            cantidadDisponible: 3,
-            capacidadPersonas: 4
-        },
-        {
-            tipoHabitacion: 'Habitación Familiar',
-            cantidadTotal: 15,
-            cantidadDisponible: 12,
-            capacidadPersonas: 6
-        }
-    ];
-    
-    // Comentar esta línea cuando el backend esté disponible
-    // displayResults(sampleData);
-}
 
 // Funcionalidad del modal de reserva
 const reservaModal = document.getElementById('reservaModal');
@@ -456,5 +426,3 @@ confirmarReservaBtn.addEventListener('click', async () => {
     }
 });
 
-// Cargar datos de muestra al iniciar (opcional, para pruebas)
-// loadSampleData();
