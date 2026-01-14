@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Búsqueda de Habitaciones - Sistema de Reservas</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1 class="title">Sistema de Reservas de Hoteles</h1>
+            <p class="subtitle">Consulta la disponibilidad de habitaciones</p>
+        </header>
+
+        <main class="main-content">
+            <section class="search-section">
+                <div class="card">
+                    <h2 class="card-title">Buscador de Habitaciones</h2>
+                    <form id="searchForm" class="search-form">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="idHotel" class="form-label">ID del Hotel</label>
+                                <input 
+                                    type="number" 
+                                    id="idHotel" 
+                                    name="idHotel" 
+                                    class="form-input" 
+                                    placeholder="Ej: 1"
+                                    required
+                                    min="1"
+                                >
+                            </div>
+
+                            <div class="form-group">
+                                <label for="idTipo" class="form-label">ID del Tipo de Habitación</label>
+                                <input 
+                                    type="number" 
+                                    id="idTipo" 
+                                    name="idTipo" 
+                                    class="form-input" 
+                                    placeholder="Ej: 1"
+                                    required
+                                    min="1"
+                                >
+                            </div>
+
+                            <div class="form-group">
+                                <label for="fechaInicio" class="form-label">Fecha de Inicio</label>
+                                <input 
+                                    type="date" 
+                                    id="fechaInicio" 
+                                    name="fechaInicio" 
+                                    class="form-input" 
+                                    required
+                                >
+                            </div>
+
+                            <div class="form-group">
+                                <label for="fechaFin" class="form-label">Fecha de Fin</label>
+                                <input 
+                                    type="date" 
+                                    id="fechaFin" 
+                                    name="fechaFin" 
+                                    class="form-input" 
+                                    required
+                                >
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary" id="searchBtn">
+                                <span class="btn-text">Buscar Disponibilidad</span>
+                                <span class="btn-loader" id="loader"></span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+
+            <section class="results-section" id="resultsSection" style="display: none;">
+                <div class="card">
+                    <h2 class="card-title">Resultados de la Búsqueda</h2>
+                    <div id="resultsContainer" class="results-container"></div>
+                </div>
+            </section>
+
+            <section class="error-section" id="errorSection" style="display: none;">
+                <div class="card card-error">
+                    <h3 class="error-title">Error</h3>
+                    <p id="errorMessage" class="error-message"></p>
+                </div>
+            </section>
+
+            <!-- Modal para calcular precio y reservar -->
+            <div id="reservaModal" class="modal" style="display: none;">
+                <div class="modal-content">
+                    <span class="modal-close" id="closeModal">&times;</span>
+                    <h2 class="modal-title">Calcular Precio y Reservar</h2>
+                    <form id="reservaForm" class="reserva-form">
+                        <input type="hidden" id="modalIdHotel">
+                        <input type="hidden" id="modalIdTipo">
+                        <input type="hidden" id="modalFechaInicio">
+                        <input type="hidden" id="modalFechaFin">
+                        
+                        <div class="form-group">
+                            <label for="numeroPersonas" class="form-label">Número de Personas</label>
+                            <input 
+                                type="number" 
+                                id="numeroPersonas" 
+                                name="numeroPersonas" 
+                                class="form-input" 
+                                min="1"
+                                required
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="cantidadHabitaciones" class="form-label">Cantidad de Habitaciones</label>
+                            <input 
+                                type="number" 
+                                id="cantidadHabitaciones" 
+                                name="cantidadHabitaciones" 
+                                class="form-input" 
+                                min="1"
+                                required
+                            >
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="button" class="btn btn-secondary" id="calcularPrecioBtn">
+                                Calcular Precio
+                            </button>
+                        </div>
+                    </form>
+
+                    <div id="precioResult" class="precio-result" style="display: none;">
+                        <h3 class="precio-title">Resumen de Precio</h3>
+                        <div id="precioDetails"></div>
+                        <div class="form-actions">
+                            <button type="button" class="btn btn-primary" id="confirmarReservaBtn">
+                                Confirmar Reserva
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>&copy; 2024 Sistema de Reservas de Hoteles. Todos los derechos reservados.</p>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
